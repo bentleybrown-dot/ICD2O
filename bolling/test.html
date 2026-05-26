@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Bobbing Coconuts</title>
+</head>
+<body>
+  <div class="game">
+    <div class="score">Time: <span id="score">0.00</span>s</div>
+    <div class="bob"></div>
+    <div class="message"></div>
+    <div class="hint">Use ← and → to move</div>
+  </div>
+
+  <script type="module">
+    import { startGame } from './js/game.js';
+    startGame();
+  </script>
+</body>
+</html>

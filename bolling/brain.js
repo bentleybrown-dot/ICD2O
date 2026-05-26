@@ -1,0 +1,130 @@
+/* Converted CSS -> JS module
+   Usage:
+     import { injectBrainStyles } from './brain.js';
+     injectBrainStyles();
+*/
+
+const css = `/* Basic page and game layout */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.25)), url('images/beach.webp') center/cover no-repeat;
+  color: #222;
+}
+
+.game {
+  position: relative;
+  width: 900px;
+  max-width: 95vw;
+  height: 600px;
+  margin: 28px auto;
+  background: linear-gradient(rgba(255,255,255,0.32), rgba(255,255,255,0.25)), url('images/beach.webp') center/cover no-repeat;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(18,40,70,0.15);
+  overflow: hidden;
+  border: 4px solid rgba(255,255,255,0.6);
+}
+
+.score {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+.bob {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  left: 24px;
+  bottom: 28px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><circle cx="32" cy="24" r="16" fill="%23ffcc99"/><rect x="14" y="36" width="36" height="20" rx="8" fill="%23008cdb"/></svg>') no-repeat center/contain;
+  transform-origin: center bottom;
+}
+
+.coconut {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  background: radial-gradient(circle at 30% 30%, #a64, #732 60%);
+  border-radius: 50%;
+  box-shadow: inset -6px -6px 10px rgba(255,255,255,0.06), 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.message {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.72);
+  color: #fff;
+  padding: 18px 22px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  max-width: 86%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 360ms cubic-bezier(.2,.9,.2,1), transform 360ms;
+}
+
+.message.visible {
+  opacity: 1;
+  transform: translate(-50%, -46%);
+  pointer-events: auto;
+}
+
+.message::after {
+  content: '';
+  display: block;
+}
+
+.message.state-10::after {
+  content: "your almost there my yummy gummy";
+}
+
+.message.state-1000::after {
+  content: "your \"half way there my hard working frog\"";
+}
+
+.message.state-5000::after {
+  content: "You did it my sweat bunny you win";
+}
+
+.hint {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  background: rgba(255,255,255,0.9);
+  color: #333;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+@media (max-width: 520px) {
+  .game { height: 420px; }
+  .bob { width: 54px; height: 54px; }
+  .coconut { width: 36px; height: 36px; }
+  .message { font-size: 16px; padding: 14px 16px; }
+}
+`;
+
+export function injectBrainStyles() {
+  if (typeof document === 'undefined') return;
+  if (document.getElementById('brain-styles')) return;
+  const s = document.createElement('style');
+  s.id = 'brain-styles';
+  s.textContent = css;
+  document.head.appendChild(s);
+}
+
+export default css;
